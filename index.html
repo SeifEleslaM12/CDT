@@ -1,0 +1,1314 @@
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Development Team (CDT)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0ead69;
+            --primary-dark: #0a8c53;
+            --primary-light: #72e5a5;
+            --dark-color: #121212;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+            --code-bg: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amiri', serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .en {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo-icon {
+            margin-left: 10px;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 1.5rem;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switch {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .lang-switch:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-color) 0%, #2a2a2a 100%);
+            color: var(--light-color);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%230ead69' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            background-color: var(--primary-color);
+            color: white;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .service-content p {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: white;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: var(--code-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Team Section */
+        .team {
+            background-color: #f9f9f9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            height: 250px;
+            background-color: var(--gray-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-info p {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--gray-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details li i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-left: 1rem;
+        }
+
+        .contact-details li a {
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details li a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-map {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 300px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-color);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* Code Animation */
+        .code-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .code-line {
+            position: absolute;
+            color: var(--primary-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            white-space: nowrap;
+            animation: codeFall linear infinite;
+        }
+
+        @keyframes codeFall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(1080px);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-text {
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark-color);
+                transition: right 0.3s;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+            
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text"><span class="en">CDT</span></div>
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+            </div>
+            
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#projects">المشاريع</a></li>
+                    <li><a href="#team">فريق العمل</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            
+            <button class="lang-switch" id="langSwitch">EN</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="code-animation" id="codeAnimation"></div>
+        <div class="container hero-content">
+            <h1>فريق <span class="en">Code Development Team</span></h1>
+            <p>نحن فريق متخصص في تطوير وتصميم المواقع الإلكترونية بأحدث التقنيات والمعايير العالمية</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">خدماتنا</a>
+                <a href="#contact" class="btn btn-outline">تواصل معنا</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>من نحن</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="350" fill="#1e1e1e"/>
+                        <g fill="#0ead69">
+                            <rect x="50" y="50" width="400" height="30" rx="5"/>
+                            <rect x="50" y="100" width="200" height="30" rx="5"/>
+                            <rect x="50" y="150" width="300" height="30" rx="5"/>
+                            <rect x="50" y="200" width="150" height="30" rx="5"/>
+                            <rect x="50" y="250" width="350" height="30" rx="5"/>
+                        </g>
+                        <g fill="white" opacity="0.7">
+                            <circle cx="35" cy="65" r="5"/>
+                            <circle cx="35" cy="115" r="5"/>
+                            <circle cx="35" cy="165" r="5"/>
+                            <circle cx="35" cy="215" r="5"/>
+                            <circle cx="35" cy="265" r="5"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="about-text">
+                    <h3>نبذة عن فريق <span class="en">CDT</span></h3>
+                    <p>نحن فريق شبابي متخصص في مجال تطوير وتصميم المواقع الإلكترونية، نسعى دائماً لتقديم أفضل الحلول التقنية لعملائنا بأحدث التقنيات والمعايير العالمية.</p>
+                    <p>تأسس فريقنا على يد مجموعة من المبرمجين والمصممين المحترفين الذين يمتلكون خبرة واسعة في مجال تطوير الويب، ونهدف إلى تقديم خدمات متميزة تلبي احتياجات عملائنا وتساعدهم على تحقيق أهدافهم.</p>
+                    <p>نؤمن بأن التطوير المستمر والابتكار هما أساس النجاح، لذلك نحرص دائماً على مواكبة أحدث التقنيات والأساليب في مجال تطوير الويب.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدماتنا</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>تصميم مواقع شخصية ومؤسساتية</h3>
+                        <p>نقدم خدمات تصميم وتطوير مواقع إلكترونية احترافية للأفراد والشركات والمؤسسات بتصاميم عصرية وجذابة تناسب هويتك.</p>
+                        <a href="#" class="project-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>تحسين محركات البحث (SEO)</h3>
+                        <p>نساعدك في تحسين ظهور موقعك في نتائج محركات البحث وزيادة الزيارات من خلال تطبيق أفضل ممارسات تحسين محركات البحث.</p>
+                        <a href="#" class="project-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>تطوير تطبيقات الويب</h3>
+                        <p>نقوم بتطوير تطبيقات ويب متكاملة وتفاعلية تناسب احتياجات عملك وتساعدك على تحقيق أهدافك بكفاءة عالية.</p>
+                        <a href="#" class="project-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>معرض المشاريع</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>متجر إلكتروني</h3>
+                        <p>تصميم وتطوير متجر إلكتروني متكامل لبيع المنتجات عبر الإنترنت مع نظام دفع آمن.</p>
+                        <a href="#" class="project-link">عرض المشروع <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>موقع شركة عقارية</h3>
+                        <p>تصميم موقع احترافي لشركة عقارية مع نظام بحث متقدم للعقارات وعرض تفاصيلها.</p>
+                        <a href="#" class="project-link">عرض المشروع <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>منصة تعليمية</h3>
+                        <p>تطوير منصة تعليمية متكاملة لتقديم الدورات والمحاضرات عبر الإنترنت.</p>
+                        <a href="#" class="project-link">عرض المشروع <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>موقع مطعم</h3>
+                        <p>تصميم موقع لمطعم مع عرض قائمة الطعام وإمكانية الحجز عبر الإنترنت.</p>
+                        <a href="#" class="project-link">عرض المشروع <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>فريق العمل</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>أحمد محمد</h3>
+                        <p>مطور واجهات أمامية</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>سارة أحمد</h3>
+                        <p>مصممة واجهات المستخدم</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>محمد علي</h3>
+                        <p>مطور خلفية</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>فاطمة خالد</h3>
+                        <p>مختصة SEO</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>تواصل معنا</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>معلومات التواصل</h3>
+                    <ul class="contact-details">
+                        <li>
+                            <a href="mailto:info@cdt-team.com">info@cdt-team.com</a>
+                            <i class="fas fa-envelope"></i>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/966500000000">+966 50 000 0000</a>
+                            <i class="fab fa-whatsapp"></i>
+                        </li>
+                        <li>
+                            <a href="tel:+966500000000">+966 50 000 0000</a>
+                            <i class="fas fa-phone"></i>
+                        </li>
+                        <li>
+                            <a href="#">الرياض، المملكة العربية السعودية</a>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </li>
+                    </ul>
+                    <h3 style="margin-top: 2rem;">تابعنا على</h3>
+                    <div class="social-links" style="justify-content: flex-start;">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <div style="text-align: center;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <p>موقعنا على الخريطة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#projects">المشاريع</a></li>
+                        <li><a href="#team">فريق العمل</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">تصميم مواقع شخصية</a></li>
+                        <li><a href="#">تصميم مواقع مؤسساتية</a></li>
+                        <li><a href="#">تحسين محركات البحث</a></li>
+                        <li><a href="#">تطوير تطبيقات الويب</a></li>
+                        <li><a href="#">استضافة المواقع</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@cdt-team.com">info@cdt-team.com</a></li>
+                        <li><a href="https://wa.me/966500000000">+966 50 000 0000</a></li>
+                        <li><a href="tel:+966500000000">+966 50 000 0000</a></li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2023 - فريق <span class="en">Code Development Team (CDT)</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Language Switch
+        const langSwitch = document.getElementById('langSwitch');
+        let currentLang = 'ar';
+        
+        langSwitch.addEventListener('click', () => {
+            if (currentLang === 'ar') {
+                document.documentElement.lang = 'en';
+                document.documentElement.dir = 'ltr';
+                currentLang = 'en';
+                langSwitch.textContent = 'عربي';
+                translateToEnglish();
+            } else {
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+                currentLang = 'ar';
+                langSwitch.textContent = 'EN';
+                translateToArabic();
+            }
+        });
+        
+        // Translation Functions
+        function translateToEnglish() {
+            // Navigation
+            document.querySelectorAll('nav ul li a')[0].textContent = 'Home';
+            document.querySelectorAll('nav ul li a')[1].textContent = 'About Us';
+            document.querySelectorAll('nav ul li a')[2].textContent = 'Services';
+            document.querySelectorAll('nav ul li a')[3].textContent = 'Projects';
+            document.querySelectorAll('nav ul li a')[4].textContent = 'Team';
+            document.querySelectorAll('nav ul li a')[5].textContent = 'Contact';
+            
+            // Hero Section
+            document.querySelector('.hero h1').innerHTML = 'Code Development Team';
+            document.querySelector('.hero p').textContent = 'We are a team specialized in developing and designing websites with the latest technologies and international standards';
+            document.querySelectorAll('.hero-buttons a')[0].textContent = 'Our Services';
+            document.querySelectorAll('.hero-buttons a')[1].textContent = 'Contact Us';
+            
+            // About Section
+            document.querySelector('#about .section-title h2').textContent = 'About Us';
+            document.querySelector('.about-text h3').innerHTML = 'About CDT Team';
+            document.querySelectorAll('.about-text p')[0].textContent = 'We are a young team specialized in website development and design, always striving to provide the best technical solutions to our clients with the latest technologies and international standards.';
+            document.querySelectorAll('.about-text p')[1].textContent = 'Our team was founded by a group of professional programmers and designers who have extensive experience in web development, and we aim to provide distinguished services that meet the needs of our clients and help them achieve their goals.';
+            document.querySelectorAll('.about-text p')[2].textContent = 'We believe that continuous development and innovation are the basis of success, so we always make sure to keep up with the latest technologies and methods in the field of web development.';
+            
+            // Services Section
+            document.querySelector('#services .section-title h2').textContent = 'Our Services';
+            document.querySelectorAll('.service-content h3')[0].textContent = 'Personal & Corporate Website Design';
+            document.querySelectorAll('.service-content p')[0].textContent = 'We provide professional website design and development services for individuals, companies, and institutions with modern and attractive designs that suit your identity.';
+            document.querySelectorAll('.service-content h3')[1].textContent = 'Search Engine Optimization (SEO)';
+            document.querySelectorAll('.service-content p')[1].textContent = 'We help you improve your website\'s appearance in search engine results and increase visits by applying the best SEO practices.';
+            document.querySelectorAll('.service-content h3')[2].textContent = 'Web Application Development';
+            document.querySelectorAll('.service-content p')[2].textContent = 'We develop integrated and interactive web applications that suit your business needs and help you achieve your goals efficiently.';
+            document.querySelectorAll('.project-link').forEach(link => {
+                link.innerHTML = 'More <i class="fas fa-arrow-right"></i>';
+            });
+            
+            // Projects Section
+            document.querySelector('#projects .section-title h2').textContent = 'Projects Gallery';
+            document.querySelectorAll('.project-content h3')[0].textContent = 'E-commerce Store';
+            document.querySelectorAll('.project-content p')[0].textContent = 'Design and development of an integrated online store for selling products with a secure payment system.';
+            document.querySelectorAll('.project-content h3')[1].textContent = 'Real Estate Company Website';
+            document.querySelectorAll('.project-content p')[1].textContent = 'Professional website design for a real estate company with an advanced property search system and display of details.';
+            document.querySelectorAll('.project-content h3')[2].textContent = 'Educational Platform';
+            document.querySelectorAll('.project-content p')[2].textContent = 'Development of an integrated educational platform for providing courses and lectures online.';
+            document.querySelectorAll('.project-content h3')[3].textContent = 'Restaurant Website';
+            document.querySelectorAll('.project-content p')[3].textContent = 'Website design for a restaurant with menu display and online reservation capability.';
+            document.querySelectorAll('.project-content .project-link').forEach(link => {
+                link.innerHTML = 'View Project <i class="fas fa-arrow-right"></i>';
+            });
+            
+            // Team Section
+            document.querySelector('#team .section-title h2').textContent = 'Our Team';
+            document.querySelectorAll('.member-info h3')[0].textContent = 'Ahmed Mohammed';
+            document.querySelectorAll('.member-info p')[0].textContent = 'Frontend Developer';
+            document.querySelectorAll('.member-info h3')[1].textContent = 'Sarah Ahmed';
+            document.querySelectorAll('.member-info p')[1].textContent = 'UI Designer';
+            document.querySelectorAll('.member-info h3')[2].textContent = 'Mohammed Ali';
+            document.querySelectorAll('.member-info p')[2].textContent = 'Backend Developer';
+            document.querySelectorAll('.member-info h3')[3].textContent = 'Fatima Khalid';
+            document.querySelectorAll('.member-info p')[3].textContent = 'SEO Specialist';
+            
+            // Contact Section
+            document.querySelector('#contact .section-title h2').textContent = 'Contact Us';
+            document.querySelector('.contact-info h3').textContent = 'Contact Information';
+            document.querySelectorAll('.contact-details li a')[3].textContent = 'Riyadh, Saudi Arabia';
+            document.querySelectorAll('.contact-info h3')[1].textContent = 'Follow Us On';
+            document.querySelector('.contact-map p').textContent = 'Our Location on Map';
+            
+            // Footer
+            document.querySelectorAll('.footer-column h3')[0].textContent = 'Quick Links';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[0].textContent = 'Home';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[1].textContent = 'About Us';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[2].textContent = 'Services';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[3].textContent = 'Projects';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[4].textContent = 'Team';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[5].textContent = 'Contact';
+            
+            document.querySelectorAll('.footer-column h3')[1].textContent = 'Our Services';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[0].textContent = 'Personal Website Design';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[1].textContent = 'Corporate Website Design';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[2].textContent = 'Search Engine Optimization';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[3].textContent = 'Web Application Development';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[4].textContent = 'Web Hosting';
+            
+            document.querySelectorAll('.footer-column h3')[2].textContent = 'Contact Us';
+            
+            document.querySelector('.footer-bottom p').innerHTML = 'All Rights Reserved &copy; 2023 - Code Development Team (CDT)';
+        }
+        
+        function translateToArabic() {
+            // Navigation
+            document.querySelectorAll('nav ul li a')[0].textContent = 'الرئيسية';
+            document.querySelectorAll('nav ul li a')[1].textContent = 'من نحن';
+            document.querySelectorAll('nav ul li a')[2].textContent = 'خدماتنا';
+            document.querySelectorAll('nav ul li a')[3].textContent = 'المشاريع';
+            document.querySelectorAll('nav ul li a')[4].textContent = 'فريق العمل';
+            document.querySelectorAll('nav ul li a')[5].textContent = 'تواصل معنا';
+            
+            // Hero Section
+            document.querySelector('.hero h1').innerHTML = 'فريق <span class="en">Code Development Team</span>';
+            document.querySelector('.hero p').textContent = 'نحن فريق متخصص في تطوير وتصميم المواقع الإلكترونية بأحدث التقنيات والمعايير العالمية';
+            document.querySelectorAll('.hero-buttons a')[0].textContent = 'خدماتنا';
+            document.querySelectorAll('.hero-buttons a')[1].textContent = 'تواصل معنا';
+            
+            // About Section
+            document.querySelector('#about .section-title h2').textContent = 'من نحن';
+            document.querySelector('.about-text h3').innerHTML = 'نبذة عن فريق <span class="en">CDT</span>';
+            document.querySelectorAll('.about-text p')[0].textContent = 'نحن فريق شبابي متخصص في مجال تطوير وتصميم المواقع الإلكترونية، نسعى دائماً لتقديم أفضل الحلول التقنية لعملائنا بأحدث التقنيات والمعايير العالمية.';
+            document.querySelectorAll('.about-text p')[1].textContent = 'تأسس فريقنا على يد مجموعة من المبرمجين والمصممين المحترفين الذين يمتلكون خبرة واسعة في مجال تطوير الويب، ونهدف إلى تقديم خدمات متميزة تلبي احتياجات عملائنا وتساعدهم على تحقيق أهدافهم.';
+            document.querySelectorAll('.about-text p')[2].textContent = 'نؤمن بأن التطوير المستمر والابتكار هما أساس النجاح، لذلك نحرص دائماً على مواكبة أحدث التقنيات والأساليب في مجال تطوير الويب.';
+            
+            // Services Section
+            document.querySelector('#services .section-title h2').textContent = 'خدماتنا';
+            document.querySelectorAll('.service-content h3')[0].textContent = 'تصميم مواقع شخصية ومؤسساتية';
+            document.querySelectorAll('.service-content p')[0].textContent = 'نقدم خدمات تصميم وتطوير مواقع إلكترونية احترافية للأفراد والشركات والمؤسسات بتصاميم عصرية وجذابة تناسب هويتك.';
+            document.querySelectorAll('.service-content h3')[1].textContent = 'تحسين محركات البحث (SEO)';
+            document.querySelectorAll('.service-content p')[1].textContent = 'نساعدك في تحسين ظهور موقعك في نتائج محركات البحث وزيادة الزيارات من خلال تطبيق أفضل ممارسات تحسين محركات البحث.';
+            document.querySelectorAll('.service-content h3')[2].textContent = 'تطوير تطبيقات الويب';
+            document.querySelectorAll('.service-content p')[2].textContent = 'نقوم بتطوير تطبيقات ويب متكاملة وتفاعلية تناسب احتياجات عملك وتساعدك على تحقيق أهدافك بكفاءة عالية.';
+            document.querySelectorAll('.project-link').forEach(link => {
+                link.innerHTML = 'المزيد <i class="fas fa-arrow-left"></i>';
+            });
+            
+            // Projects Section
+            document.querySelector('#projects .section-title h2').textContent = 'معرض المشاريع';
+            document.querySelectorAll('.project-content h3')[0].textContent = 'متجر إلكتروني';
+            document.querySelectorAll('.project-content p')[0].textContent = 'تصميم وتطوير متجر إلكتروني متكامل لبيع المنتجات عبر الإنترنت مع نظام دفع آمن.';
+            document.querySelectorAll('.project-content h3')[1].textContent = 'موقع شركة عقارية';
+            document.querySelectorAll('.project-content p')[1].textContent = 'تصميم موقع احترافي لشركة عقارية مع نظام بحث متقدم للعقارات وعرض تفاصيلها.';
+            document.querySelectorAll('.project-content h3')[2].textContent = 'منصة تعليمية';
+            document.querySelectorAll('.project-content p')[2].textContent = 'تطوير منصة تعليمية متكاملة لتقديم الدورات والمحاضرات عبر الإنترنت.';
+            document.querySelectorAll('.project-content h3')[3].textContent = 'موقع مطعم';
+            document.querySelectorAll('.project-content p')[3].textContent = 'تصميم موقع لمطعم مع عرض قائمة الطعام وإمكانية الحجز عبر الإنترنت.';
+            document.querySelectorAll('.project-content .project-link').forEach(link => {
+                link.innerHTML = 'عرض المشروع <i class="fas fa-arrow-left"></i>';
+            });
+            
+            // Team Section
+            document.querySelector('#team .section-title h2').textContent = 'فريق العمل';
+            document.querySelectorAll('.member-info h3')[0].textContent = 'أحمد محمد';
+            document.querySelectorAll('.member-info p')[0].textContent = 'مطور واجهات أمامية';
+            document.querySelectorAll('.member-info h3')[1].textContent = 'سارة أحمد';
+            document.querySelectorAll('.member-info p')[1].textContent = 'مصممة واجهات المستخدم';
+            document.querySelectorAll('.member-info h3')[2].textContent = 'محمد علي';
+            document.querySelectorAll('.member-info p')[2].textContent = 'مطور خلفية';
+            document.querySelectorAll('.member-info h3')[3].textContent = 'فاطمة خالد';
+            document.querySelectorAll('.member-info p')[3].textContent = 'مختصة SEO';
+            
+            // Contact Section
+            document.querySelector('#contact .section-title h2').textContent = 'تواصل معنا';
+            document.querySelector('.contact-info h3').textContent = 'معلومات التواصل';
+            document.querySelectorAll('.contact-details li a')[3].textContent = 'الرياض، المملكة العربية السعودية';
+            document.querySelectorAll('.contact-info h3')[1].textContent = 'تابعنا على';
+            document.querySelector('.contact-map p').textContent = 'موقعنا على الخريطة';
+            
+            // Footer
+            document.querySelectorAll('.footer-column h3')[0].textContent = 'روابط سريعة';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[0].textContent = 'الرئيسية';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[1].textContent = 'من نحن';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[2].textContent = 'خدماتنا';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[3].textContent = 'المشاريع';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[4].textContent = 'فريق العمل';
+            document.querySelectorAll('.footer-links')[0].querySelectorAll('li a')[5].textContent = 'تواصل معنا';
+            
+            document.querySelectorAll('.footer-column h3')[1].textContent = 'خدماتنا';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[0].textContent = 'تصميم مواقع شخصية';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[1].textContent = 'تصميم مواقع مؤسساتية';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[2].textContent = 'تحسين محركات البحث';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[3].textContent = 'تطوير تطبيقات الويب';
+            document.querySelectorAll('.footer-links')[1].querySelectorAll('li a')[4].textContent = 'استضافة المواقع';
+            
+            document.querySelectorAll('.footer-column h3')[2].textContent = 'تواصل معنا';
+            
+            document.querySelector('.footer-bottom p').innerHTML = 'جميع الحقوق محفوظة &copy; 2023 - فريق <span class="en">Code Development Team (CDT)</span>';
+        }
+        
+        // Code Animation
+        function createCodeAnimation() {
+            const codeAnimation = document.getElementById('codeAnimation');
+            const codeSnippets = [
+                '&lt;div class="container"&gt;',
+                '&lt;header&gt;',
+                'function init() {',
+                'const app = new App();',
+                'return true;',
+                'import React from "react";',
+                'const data = await fetch(url);',
+                '.container {',
+                'display: flex;',
+                'margin: 0 auto;',
+                'padding: 20px;',
+                'const router = express.Router();',
+                'export default class extends React.Component {',
+                'render() {',
+                'return (',
+                '&lt;/div&gt;',
+                '&lt;/body&gt;',
+                '&lt;/html&gt;'
+            ];
+            
+            function createCodeLine() {
+                const codeLine = document.createElement('div');
+                codeLine.className = 'code-line';
+                codeLine.innerHTML = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+                codeLine.style.left = Math.random() * 100 + '%';
+                codeLine.style.animationDuration = Math.random() * 10 + 5 + 's';
+                codeAnimation.appendChild(codeLine);
+                
+                setTimeout(() => {
+                    codeLine.remove();
+                }, 15000);
+            }
+            
+            // Create initial code lines
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createCodeLine();
+                }, i * 500);
+            }
+            
+            // Continue creating code lines
+            setInterval(createCodeLine, 2000);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Initialize code animation
+        window.addEventListener('load', createCodeAnimation);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'966e5518045fc5d9',t:'MTc1MzgxMDEwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
