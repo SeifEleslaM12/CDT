@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,625 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2ecc71;
-            --primary-dark: #27ae60;
-            --secondary-color: #2c3e50;
-            --light-color: #ecf0f1;
-            --dark-color: #1a1a1a;
-            --gray-color: #34495e;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Amiri', serif;
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
-        }
-        
-        body.en {
-            font-family: 'JetBrains Mono', monospace;
-            direction: ltr;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--secondary-color);
-            color: var(--light-color);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-right: 10px;
-        }
-        
-        .en .logo-text {
-            margin-right: 0;
-            margin-left: 10px;
-        }
-        
-        .logo-symbol {
-            font-size: 1.5rem;
-            color: var(--light-color);
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin: 0 15px;
-        }
-        
-        nav ul li a {
-            color: var(--light-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-        
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        .language-toggle {
-            background: none;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.3s;
-        }
-        
-        .language-toggle:hover {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232c3e50"/><path d="M20 20 L40 20 L40 40 L20 40 Z" fill="%232ecc71" fill-opacity="0.2"/><path d="M60 20 L80 20 L80 40 L60 40 Z" fill="%232ecc71" fill-opacity="0.2"/><path d="M20 60 L40 60 L40 80 L20 80 Z" fill="%232ecc71" fill-opacity="0.2"/><path d="M60 60 L80 60 L80 80 L60 80 Z" fill="%232ecc71" fill-opacity="0.2"/></svg>');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--light-color);
-            padding-top: 70px;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            margin: 0 10px;
-            border: 2px solid var(--primary-color);
-        }
-        
-        .hero-btn:hover {
-            background-color: transparent;
-            color: var(--primary-color);
-        }
-        
-        .hero-btn.outline {
-            background-color: transparent;
-            border: 2px solid var(--light-color);
-        }
-        
-        .hero-btn.outline:hover {
-            background-color: var(--light-color);
-            color: var(--secondary-color);
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 3px;
-            background-color: var(--primary-color);
-            margin: 10px auto 0;
-        }
-        
-        /* About Section */
-        .about {
-            background-color: var(--light-color);
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-        
-        .about-image {
-            flex: 1;
-        }
-        
-        .about-image svg {
-            width: 100%;
-            height: auto;
-            max-width: 500px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-        
-        .about-text p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        
-        /* Services Section */
-        .services {
-            background-color: var(--secondary-color);
-            color: var(--light-color);
-        }
-        
-        .services .section-title h2 {
-            color: var(--light-color);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .service-card p {
-            font-size: 1rem;
-        }
-        
-        /* Projects Section */
-        .projects {
-            background-color: var(--light-color);
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .project-image {
-            height: 200px;
-            background-color: var(--gray-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light-color);
-            font-size: 3rem;
-        }
-        
-        .project-info {
-            padding: 20px;
-        }
-        
-        .project-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-        
-        .project-info p {
-            font-size: 1rem;
-            color: var(--gray-color);
-        }
-        
-        /* Team Section */
-        .team {
-            background-color: var(--secondary-color);
-            color: var(--light-color);
-        }
-        
-        .team .section-title h2 {
-            color: var(--light-color);
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            justify-content: center;
-        }
-        
-        .team-member {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
-        
-        .member-image {
-            height: 250px;
-            background-color: var(--gray-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light-color);
-            font-size: 5rem;
-        }
-        
-        .member-info {
-            padding: 20px;
-        }
-        
-        .member-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-        
-        .member-info p {
-            font-size: 1rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            color: var(--light-color);
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        /* Contact Section */
-        .contact {
-            background-color: var(--light-color);
-        }
-        
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-left: 15px;
-            width: 30px;
-        }
-        
-        .en .contact-icon {
-            margin-left: 0;
-            margin-right: 15px;
-        }
-        
-        .contact-text {
-            font-size: 1.1rem;
-        }
-        
-        .contact-text a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .contact-text a:hover {
-            color: var(--primary-color);
-        }
-        
-        .contact-map {
-            flex: 1;
-            min-width: 300px;
-            height: 350px;
-            background-color: var(--gray-color);
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light-color);
-            font-size: 2rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: var(--light-color);
-            padding: 40px 0 20px;
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        
-        .footer-links a {
-            color: var(--light-color);
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .footer-social {
-            margin-bottom: 30px;
-        }
-        
-        .footer-social a {
-            color: var(--light-color);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        
-        .footer-social a:hover {
-            color: var(--primary-color);
-        }
-        
-        .copyright {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-image {
-                margin-bottom: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                position: relative;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--secondary-color);
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-                transition: clip-path 0.4s ease-in-out;
-            }
-            
-            nav.active {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-btn {
-                display: block;
-                margin: 10px auto;
-                max-width: 200px;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -673,25 +58,16 @@
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="50" y="50" width="400" height="300" rx="20" fill="#2c3e50"/>
-                        <rect x="70" y="70" width="360" height="260" rx="10" fill="#34495e"/>
-                        <rect x="90" y="90" width="320" height="40" rx="5" fill="#2ecc71"/>
-                        <rect x="90" y="150" width="150" height="20" rx="5" fill="#ecf0f1"/>
-                        <rect x="90" y="180" width="200" height="20" rx="5" fill="#ecf0f1"/>
-                        <rect x="90" y="210" width="180" height="20" rx="5" fill="#ecf0f1"/>
-                        <rect x="90" y="240" width="220" height="20" rx="5" fill="#ecf0f1"/>
-                        <rect x="90" y="270" width="160" height="20" rx="5" fill="#ecf0f1"/>
-                        <rect x="90" y="300" width="100" height="30" rx="5" fill="#2ecc71"/>
-                        <circle cx="380" cy="220" r="50" fill="#2ecc71" opacity="0.7"/>
-                        <circle cx="350" cy="180" r="30" fill="#ecf0f1" opacity="0.5"/>
-                    </svg>
+                    <img src="assests/img/cdtimg.png" alt="CDT-img">
                 </div>
                 <div class="about-text">
                     <h3>فريق Code Development Team</h3>
-                    <p>نحن فريق متخصص في تطوير وتصميم مواقع الويب بأحدث التقنيات والمعايير العالمية. نسعى لتقديم حلول برمجية مبتكرة تلبي احتياجات عملائنا وتساعدهم على تحقيق أهدافهم.</p>
-                    <p>رؤيتنا هي أن نكون الخيار الأول في مجال تطوير الويب من خلال تقديم خدمات عالية الجودة وتجارب مستخدم فريدة ومميزة.</p>
-                    <p>رسالتنا هي تمكين الأفراد والشركات من التواجد الرقمي الفعال من خلال تصميم وتطوير مواقع ويب احترافية تجمع بين الأداء المتميز والتصميم الجذاب.</p>
+                    <p>نحن فريق متخصص في تطوير وتصميم مواقع الويب بأحدث التقنيات والمعايير العالمية. نسعى لتقديم حلول
+                        برمجية مبتكرة تلبي احتياجات عملائنا وتساعدهم على تحقيق أهدافهم.</p>
+                    <p>رؤيتنا هي أن نكون الخيار الأول في مجال تطوير الويب من خلال تقديم خدمات عالية الجودة وتجارب مستخدم
+                        فريدة ومميزة.</p>
+                    <p>رسالتنا هي تمكين الأفراد والشركات من التواجد الرقمي الفعال من خلال تصميم وتطوير مواقع ويب
+                        احترافية تجمع بين الأداء المتميز والتصميم الجذاب.</p>
                 </div>
             </div>
         </div>
@@ -723,7 +99,8 @@
                         <i class="fas fa-building"></i>
                     </div>
                     <h3>تصميم مواقع للمؤسسات</h3>
-                    <p>نطور مواقع احترافية للشركات والمؤسسات تعزز تواجدها الرقمي وتساعدها على التواصل مع عملائها بفعالية.</p>
+                    <p>نطور مواقع احترافية للشركات والمؤسسات تعزز تواجدها الرقمي وتساعدها على التواصل مع عملائها
+                        بفعالية.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -864,13 +241,17 @@
                         </div>
                     </div>
                     <div class="social-links" style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i class="fab fa-github"></i></a>
-                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i class="fab fa-twitter"></i></a>
-                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i
+                                class="fab fa-github"></i></a>
+                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" style="font-size: 1.5rem; color: var(--secondary-color);"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </section>
@@ -904,21 +285,21 @@
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
-        
+
         mobileMenuBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
         });
-        
+
         // Language Toggle
         const languageToggle = document.querySelector('.language-toggle');
         const body = document.querySelector('body');
-        
+
         // Navigation Links
         const navLinks = {
             ar: ['الرئيسية', 'من نحن', 'خدماتنا', 'المشاريع', 'فريق العمل', 'تواصل معنا'],
             en: ['Home', 'About', 'Services', 'Projects', 'Team', 'Contact']
         };
-        
+
         // Hero Content
         const heroContent = {
             ar: {
@@ -934,13 +315,13 @@
                 btn2: 'Contact Us'
             }
         };
-        
+
         // Section Titles
         const sectionTitles = {
             ar: ['من نحن', 'خدماتنا', 'معرض المشاريع', 'فريق العمل', 'تواصل معنا'],
             en: ['About Us', 'Our Services', 'Projects Gallery', 'Our Team', 'Contact Us']
         };
-        
+
         // Services
         const services = {
             ar: [
@@ -980,7 +361,7 @@
                 }
             ]
         };
-        
+
         // Projects
         const projects = {
             ar: [
@@ -1020,7 +401,7 @@
                 }
             ]
         };
-        
+
         // Team Members
         const team = {
             ar: [
@@ -1044,7 +425,7 @@
                 }
             ]
         };
-        
+
         // Contact Info
         const contact = {
             ar: {
@@ -1056,129 +437,129 @@
                 address: 'Sharjah , United Arab Emirate',
             }
         };
-        
+
         // Footer
         const footer = {
             ar: '&copy; 2023 Code Development Team (CDT). جميع الحقوق محفوظة.',
             en: '&copy; 2023 Code Development Team (CDT). All rights reserved.'
         };
-        
+
         // Toggle Language Function
         languageToggle.addEventListener('click', () => {
             const isArabic = !body.classList.contains('en');
-            
+
             if (isArabic) {
                 // Switch to English
                 body.classList.add('en');
                 body.dir = 'ltr';
                 languageToggle.textContent = 'العربية';
-                
+
                 // Update Navigation
                 const navItems = document.querySelectorAll('nav ul li a');
                 navItems.forEach((item, index) => {
                     item.textContent = navLinks.en[index];
                 });
-                
+
                 // Update Hero Content
                 document.querySelector('.hero h1').textContent = heroContent.en.title;
                 document.querySelector('.hero p').textContent = heroContent.en.description;
                 document.querySelectorAll('.hero-btn')[0].textContent = heroContent.en.btn1;
                 document.querySelectorAll('.hero-btn')[1].textContent = heroContent.en.btn2;
-                
+
                 // Update Section Titles
                 const sectionTitleElements = document.querySelectorAll('.section-title h2');
                 sectionTitleElements.forEach((title, index) => {
                     title.textContent = sectionTitles.en[index];
                 });
-                
+
                 // Update Services
                 const serviceCards = document.querySelectorAll('.service-card');
                 serviceCards.forEach((card, index) => {
                     card.querySelector('h3').textContent = services.en[index].title;
                     card.querySelector('p').textContent = services.en[index].description;
                 });
-                
+
                 // Update Projects
                 const projectCards = document.querySelectorAll('.project-card');
                 projectCards.forEach((card, index) => {
                     card.querySelector('h3').textContent = projects.en[index].title;
                     card.querySelector('p').textContent = projects.en[index].description;
                 });
-                
+
                 // Update Team
                 const teamMembers = document.querySelectorAll('.team-member');
                 teamMembers.forEach((member, index) => {
                     member.querySelector('h3').textContent = team.en[index].name;
                     member.querySelector('p').textContent = team.en[index].role;
                 });
-                
+
                 // Update Contact
                 document.querySelector('.contact-info h3').textContent = contact.en.title;
                 document.querySelector('.contact-text:not(:has(a))').textContent = contact.en.address;
                 document.querySelector('.contact-map span').textContent = contact.en.mapText;
-                
+
                 // Update Footer
                 document.querySelector('.copyright').innerHTML = footer.en;
-                
+
                 // Update Footer Links
                 const footerLinks = document.querySelectorAll('.footer-links a');
                 footerLinks.forEach((link, index) => {
                     link.textContent = navLinks.en[index];
                 });
-                
+
             } else {
                 // Switch to Arabic
                 body.classList.remove('en');
                 body.dir = 'rtl';
                 languageToggle.textContent = 'English';
-                
+
                 // Update Navigation
                 const navItems = document.querySelectorAll('nav ul li a');
                 navItems.forEach((item, index) => {
                     item.textContent = navLinks.ar[index];
                 });
-                
+
                 // Update Hero Content
                 document.querySelector('.hero h1').textContent = heroContent.ar.title;
                 document.querySelector('.hero p').textContent = heroContent.ar.description;
                 document.querySelectorAll('.hero-btn')[0].textContent = heroContent.ar.btn1;
                 document.querySelectorAll('.hero-btn')[1].textContent = heroContent.ar.btn2;
-                
+
                 // Update Section Titles
                 const sectionTitleElements = document.querySelectorAll('.section-title h2');
                 sectionTitleElements.forEach((title, index) => {
                     title.textContent = sectionTitles.ar[index];
                 });
-                
+
                 // Update Services
                 const serviceCards = document.querySelectorAll('.service-card');
                 serviceCards.forEach((card, index) => {
                     card.querySelector('h3').textContent = services.ar[index].title;
                     card.querySelector('p').textContent = services.ar[index].description;
                 });
-                
+
                 // Update Projects
                 const projectCards = document.querySelectorAll('.project-card');
                 projectCards.forEach((card, index) => {
                     card.querySelector('h3').textContent = projects.ar[index].title;
                     card.querySelector('p').textContent = projects.ar[index].description;
                 });
-                
+
                 // Update Team
                 const teamMembers = document.querySelectorAll('.team-member');
                 teamMembers.forEach((member, index) => {
                     member.querySelector('h3').textContent = team.ar[index].name;
                     member.querySelector('p').textContent = team.ar[index].role;
                 });
-                
+
                 // Update Contact
                 document.querySelector('.contact-info h3').textContent = contact.ar.title;
                 document.querySelector('.contact-text:not(:has(a))').textContent = contact.ar.address;
                 document.querySelector('.contact-map span').textContent = contact.ar.mapText;
-                
+
                 // Update Footer
                 document.querySelector('.copyright').innerHTML = footer.ar;
-                
+
                 // Update Footer Links
                 const footerLinks = document.querySelectorAll('.footer-links a');
                 footerLinks.forEach((link, index) => {
@@ -1186,24 +567,24 @@
                 });
             }
         });
-        
+
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = targetElement.offsetTop - headerHeight;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                    
+
                     // Close mobile menu if open
                     if (nav.classList.contains('active')) {
                         nav.classList.remove('active');
@@ -1212,5 +593,7 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96734eac5302ccd4',t:'MTc1Mzg2MjI2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'96734eac5302ccd4',t:'MTc1Mzg2MjI2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
 </html>
